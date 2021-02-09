@@ -37,4 +37,4 @@ app.post("/validar", function (req, res) {
     res.render("index", { nombre: resul });
 });
 
-app.listen(8083);
+app.listen(8080);

@@ -1,0 +1,33 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Calculadora
+    body
+        form(action="comprobar", method="POST")  
+            - if (!resp){
+                - for (var i = 0; i < 11; ++i) {
+                    p
+                        input(type="number",name="val",placeholder="Primer valor",value="#{num}",readonly)
+                        b    X    
+                        input(type="number",name="",placeholder="Primer valor",value="#{i}",readonly)
+                        b    =    
+                        input(type="number",name="caja",placeholder="Resultado",value="")
+                - }
+                    input(type="submit",name="comprobar",value="comprobar")
+            - }else{
+                - for (var i = 0; i < 11; ++i) {
+                    p
+                        input(type="number",name="val",placeholder="Primer valor",value="#{num}",readonly)
+                        b    X    
+                        input(type="number",name="",placeholder="Primer valor",value="#{i}",readonly)
+                        b    =    
+                        - if ((num * i) == resp[i]){
+                            input(type="number",name="caja",placeholder="Resultado",value="#{resp[i]}", style={background: 'green'})
+                        - }else{
+                            input(type="number",name="caja",placeholder="Resultado",value="#{resp[i]}", style={background: 'red'})
+                        - }
+                 - }
+                input(type="submit",name="comprobar",value="comprobar")
+            - }
+        a(href='/') Volver
